@@ -27,7 +27,7 @@ containers: {
 
 ## Deploy with Acorn
 
-Make sure to [_Install Acorn_]: <https://docs.acorn.io/installation/installing> before running acorns. 
+Make sure to [_Install Acorn_](https://docs.acorn.io/installation/installing) before running acorns. 
 
 Clone this repo to get started and run below command to deploy this project
 
