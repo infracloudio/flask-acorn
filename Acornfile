@@ -1,0 +1,15 @@
+containers: {
+  web: {
+    build: {
+      context: "."
+      target: "builder"
+    }
+   env: {
+      if args.dev { 
+        "FLASK_DEBUG": "1"
+      }
+    }
+    if args.dev { dirs: "/app": "./" }
+    ports: publish: "5000/http"
+  }
+}
