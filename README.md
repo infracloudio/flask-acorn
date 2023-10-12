@@ -38,9 +38,7 @@ Clone this repo to get started and run below command to deploy this project
 ## Explaining the Acornfile
 
 
-* `containers` section: describes the set of containers your Acorn app consists of
-
-  * Note: app, db and cache are custom names of your containers
+* `containers` section: describes the set of containers your Acorn app consists of. Note: app are custom names of your containers
   * `app` - Our Python Flask App
     * `build`: build from Dockerfile that we created
     * `env`: environment variables, statically defined, referencing a secret or referencing an Acorn argument
