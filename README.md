@@ -32,7 +32,14 @@ Make sure to [_Install Acorn_](https://docs.acorn.io/installation/installing) be
 Clone this repo to get started and run below command to deploy this project
 
 ```bash
-  acorn run
+  acorn run .
+```
+
+Alternatively, you can directly run using the image like below
+
+```bash
+acorn run ghcr.io/infracloudio/flask-acorn:v0.0.1
+
 ```
 
 ## Explaining the Acornfile
