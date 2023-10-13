@@ -1,95 +1,34 @@
 # Flaskr
-======
 
-The basic blog app built in the Flask `tutorial`
-
-tutorial: https://flask.palletsprojects.com/tutorial/
+The basic blog app built in the official Flask [tutorial](https://flask.palletsprojects.com/tutorial/). This sample application is a basic CRUD application to get started with Flask.
 
 
-[_Acornfile_](.Acornfile)
-```
-containers: {
-  web: {
-    build: {
-      context: "."
-      target: "builder"
-    }
-   env: {
-      if args.dev { 
-        "FLASK_DEBUG": "1"
-      }
-    }
-    if args.dev { dirs: "/app": "./" }
-    ports: publish: "5000/http"
-  }
-}
-```
+## Deploy the Flask App 
 
-## Deploy with Acorn
+You can deploy the sample Flask app on the Acorn SaaS Platform with following simple steps.
 
-Make sure to [_Install Acorn_](https://docs.acorn.io/installation/installing) before running acorns. 
+1. Login into the [Acorn SaaS Platform](https://beta.acorn.io/) using the Github Sign-In option with your Github user.
+2. Select the "Create Acorn" option.
+3. Choose the source for deploying your Acorns
+  * Select "From Acorn Image" to deploy the sample Flask Application and select its Image
+  * Provide any random name such as `flask-app` and keeping Project's default Region, type in the below Acorn image and choose Create 
+    ```bash
+    ghcr.io/infracloudio/flask-acorn:v3.0.0-0
+    ```
+4. Now the sample App is provisioned on Acorn SaaS Platform and is available for 2hrs. Upgrade to pro account to keep it running longer.
+5. Once the Acorn is running, you can access it by clicking the Endpoint or the redirect link.
 
-Clone this repo to get started and run below command to deploy this project
+## Acorn Flask App Details
 
-```bash
-  acorn run .
-```
+The Acorn Dashboard is integrated with multiple features such as Events, Logs, Details and accessing the Shell of the Application. Details include the CPU, Memory, Network, Latency, Requests and Errors for the Application.
 
-Alternatively, you can directly run using the image like below
+Explore various available options by clicking the Menu option on your Acorn App.
 
-```bash
-acorn run ghcr.io/infracloudio/flask-acorn:v0.0.1
+For more details on using the Acorn Dashboard, check this link - [https://beta-docs.acorn.io/getting-started#exploring-the-acorn-dashboard](https://beta-docs.acorn.io/getting-started#exploring-the-acorn-dashboard) 
 
-```
+## What next?
+After deploying you can edit the Acorn Application or remove it if no longer needed.
 
-## Explaining the Acornfile
-
-
-* `containers` section: describes the set of containers your Acorn app consists of. Note: app are custom names of your containers
-  * `app` - Our Python Flask App
-    * `build`: build from Dockerfile that we created
-    * `env`: environment variables, statically defined, referencing a secret or referencing an Acorn argument
-    * `ports`: using the publish type, we expose the app inside the cluster but also outside of it using an auto-generated ingress resource
-    * `dirs`: Directories to mount into the container filesystem
-      * `dirs: "/app": "./"`: Mount the current directory to the /app dir, which is where the code resides inside the container as per the Dockerfile. This is to enable hot-reloading of code.
-
-
-## Run your Application
-
-To start your Acorn app just run:
-
-```bash
-acorn run -n flask-app . 
-```
-The `-n flask-app` gives this app a specific name so that the rest of the steps can refer to it. If you omit `-n`, a random two-word name will be generated.
-
-## Access your app
-
-Due to the configuration `ports: publish: "8000/http"` under `containers.app`, our web app will be exposed outside of our Kubernetes cluster using the cluster's ingress controller. Checkout the running apps via
-
-```bash
-acorn apps
-```
-
-```bash
-$ acorn apps
-NAME        IMAGE          COMMIT         CREATED     ENDPOINTS                                          MESSAGE
-flask-app   0ed9a2b95c69   114c50666ed9   3m22s ago   http://web-flask-app-98d916c5.local.oss-acorn.io   OK
-
-```
-
-## Development Mode
-
-In development mode, Acorn will watch the local directory for changes and synchronize them to the running Acorn app. In general, changes to the Acornfile are directly synchronized, e.g. adding environment variables, etc. Depending on the change, the deployed containers will be recreated.
-
-```bash
-acorn dev -n flask-app
-```
-
-The lines `if args.dev { dirs: "/app": "./" }` enable hot-reloading of code by mounting the current local directory into the app container.
-
-You will see the change applied when you reload the application's page in your browser.
-
-
-
+1. Click the Edit option to edit your Acorn's Image. Toggle the Advanced Options switch for additional edit options.
+2. Remove the Acorn by selecting the Remove option from your Acorn dashboard.
 

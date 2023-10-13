@@ -1,15 +1,15 @@
 FROM --platform=$BUILDPLATFORM python:3.10-alpine AS builder
 
 ENV FLASK_APP=flaskr
+ENV FLASK_RUN_HOST 0.0.0.0
 
 COPY . /app
 
 WORKDIR /app
 
-#COPY requirements.txt /app
-#RUN --mount=type=cache,target=/root/.cache/pip \
-    #pip3 install -r requirements.txt
-RUN pip install -e ./
+COPY requirements.txt /app
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip3 install -r requirements.txt
 
 RUN flask init-db
 
