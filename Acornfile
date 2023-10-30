@@ -1,6 +1,7 @@
 name:        "Flask Sample Acorn"
 description: "Acorn running a sample Flask app"
 readme:      "./README.md"
+icon:        "./flask.svg"
 
 containers: {
   web: {
